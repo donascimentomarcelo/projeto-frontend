@@ -16,6 +16,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   public formGroup: FormGroup;
   public maxLength: number;
+  public imagePath = 'assets/images/Logo.png';
 
   constructor(
     private fb: FormBuilder,
@@ -33,9 +34,9 @@ export class FormComponent implements OnInit, AfterViewInit {
     });
   }
 
-  submitForm() {
-    console.log(this.formGroup.value);
-  }
+  submitForm = () => console.log(this.formGroup.value);
+
+  retrieveQuote = () => console.log('Recuperar cotação acionado!');
 
   private buildForm(): void {
     this.formGroup = this.fb.group({

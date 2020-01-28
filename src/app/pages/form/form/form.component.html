@@ -1,11 +1,11 @@
 <div class="bc-color-container">
     <div class="header">
-        <a href="#default" class="logo">Logo</a>
-        <div class="header-right">
+        <div  class="align-logo">
+            <img [src]="imagePath">
         </div>
     </div>
     <div class="container mt-5">
-        <div class="card">
+        <div class="card align-card">
             <div class="mt-5">
                 <div class="first-title">
                     <h2>Faça a cotação do seguro do seu veículo</h2>
@@ -59,7 +59,7 @@
                     
                     <div class="align-button mt-5">
                         <button type="submit" [disabled]="formGroup.invalid" class="btn btn-success btn-lg btn-block">Cotar</button>
-                        <button type="button" class="btn btn-link btn-lg btn-block">Recuperar cotação</button>
+                        <button type="button" (click)="retrieveQuote()" class="btn btn-link btn-lg btn-block">Recuperar cotação</button>
                     </div>
                 </form>
             </div>
