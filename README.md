@@ -6,6 +6,7 @@
 
 ## Instalação
 
+- Clonar o projeto do Git a patir do endereço https://github.com/marcelojunin/projeto-frontend.git em alguma pasta. Vou usar como exemplo a pasta Documents.
 - Ir pelo cmd até a pasta do projeto C:\Users\marcelo.santanna\Documents\projeto-frontend>.
 - Executar o comando "npm install".
 - Executar o comando "ng s".
