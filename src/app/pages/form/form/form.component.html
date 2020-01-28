@@ -20,11 +20,22 @@
                     <div class="form-row">
                       <div class="col-xs-12 col-lg-6">
                         <label for="name">Nome</label>
-                        <input type="text" id="name" formControlName="name" class="form-control" placeholder="Digite o nome.">
+                        <input type="text" id="name" formControlName="name" class="form-control" placeholder="Digite o nome."
+                            [ngClass]="{'is-invalid': formGroup.get('name').touched === true && formGroup.get('name').invalid === true}">
+                        <div class="text-danger mr-3" *ngIf="formGroup.get('name').invalid && formGroup.get('name').touched" >
+                            <div *ngIf="formGroup.get('name').errors.required">Dado obrigatório</div>
+                            <div *ngIf="formGroup.get('name').errors.minlength">Deve ter no minimo 2 caracteres</div>
+                        </div>
                       </div>
+
                       <div class="col-xs-12 col-lg-6">
                         <label for="email">E-mail</label>
-                        <input type="text" id="email" formControlName="email" class="form-control" placeholder="Digite o e-mail.">
+                        <input type="text" id="email" formControlName="email" class="form-control" placeholder="Digite o e-mail."
+                        [ngClass]="{'is-invalid': formGroup.get('email').touched === true && formGroup.get('email').invalid === true}">
+                        <div class="text-danger mr-3" *ngIf="formGroup.get('email').invalid && formGroup.get('email').touched" >
+                            <div *ngIf="formGroup.get('email').errors.required">Dado obrigatório</div>
+                            <div *ngIf="formGroup.get('email').errors.email">E-mail inválido</div>
+                        </div>
                       </div>
                     </div>
                     <div class="form-row">
@@ -36,7 +47,13 @@
                       </div>
                       <div class="col-xs-9 col-sm-9 col-lg-9">
                         <label for="document-number">Número do documento</label>
-                        <input type="text" id="document-number" formControlName="documentNumber" class="form-control" placeholder="Digite o número do documento.">
+                        <input type="text" id="document-number" formControlName="documentNumber" class="form-control" placeholder="Digite o número do documento."
+                        [ngClass]="{'is-invalid': formGroup.get('documentNumber').touched === true && formGroup.get('documentNumber').invalid === true}">
+                        <div class="text-danger mr-3" *ngIf="formGroup.get('documentNumber').invalid && formGroup.get('documentNumber').touched" >
+                            <div *ngIf="formGroup.get('documentNumber').errors.required">Dado obrigatório</div>
+                            <div *ngIf="formGroup.get('documentNumber').errors.maxlength">O tamanho máximo desse campo deve ser {{maxLength}} caracteres</div>
+                            <div *ngIf="formGroup.get('documentNumber').errors.pattern">Digite apenas números</div>
+                        </div>
                       </div>
                     </div>
                     

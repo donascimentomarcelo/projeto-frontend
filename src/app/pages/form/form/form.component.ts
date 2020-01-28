@@ -15,6 +15,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   ];
 
   public formGroup: FormGroup;
+  public maxLength: number;
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +34,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   submitForm() {
-    console.log(this.formGroup);
+    console.log(this.formGroup.value);
   }
 
   private buildForm(): void {
@@ -47,6 +48,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   private validateIdentityCardOrCell(value: any) {
     if (value === 'cedula' || value === 'tarjetaIdentidade') {
+      this.maxLength = 10;
       this.formGroup.controls['documentNumber']
         .setValidators([
           Validators.required,
@@ -60,6 +62,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   private validateForeignCell(value: any) {
     if (value === 'cedulaExtrangeira') {
+      this.maxLength = 15;
       this.formGroup.controls['documentNumber']
         .setValidators([
           Validators.required,
