@@ -46,6 +46,12 @@
     text-align: center;
     font-family: Arial, sans-serif;
 }
+
+.align-button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
   
 @media screen and (max-width: 500px) {
     .header a {
@@ -56,5 +62,17 @@
 
     .header-right {
         float: none;
+    }
+
+    .align-button {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .second-title-size {
+        font-size: 20px;
     }
 }

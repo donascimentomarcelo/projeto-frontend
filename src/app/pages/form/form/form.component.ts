@@ -1,15 +1,72 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  public documentTypes: any[] = [
+    {key: 'cedula', value: 'Cédula'},
+    {key: 'cedulaExtrangeira', value: 'Cédula Extrangeira'},
+    {key: 'tarjetaIdentidade', value: 'Tarjeta de identidade'},
+  ];
+
+  public formGroup: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+  ) { }
 
   ngOnInit() {
+    this.buildForm();
   }
 
+  ngAfterViewInit() {
+    this.formGroup.controls.documentType.valueChanges
+      .subscribe(value => {
+        this.validateIdentityCardOrCell(value);
+        this.validateForeignCell(value);
+    });
+  }
+
+  submitForm() {
+    console.log(this.formGroup);
+  }
+
+  private buildForm(): void {
+    this.formGroup = this.fb.group({
+      name: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
+      documentType: [null, [Validators.required]],
+      documentNumber: [null]
+    });
+  }
+
+  private validateIdentityCardOrCell(value: any) {
+    if (value === 'cedula' || value === 'tarjetaIdentidade') {
+      this.formGroup.controls['documentNumber']
+        .setValidators([
+          Validators.required,
+          Validators.pattern("^[0-9]*$"),
+          Validators.maxLength(10)
+        ]);
+      this.formGroup.controls['documentNumber']
+        .updateValueAndValidity();
+    }
+  }
+
+  private validateForeignCell(value: any) {
+    if (value === 'cedulaExtrangeira') {
+      this.formGroup.controls['documentNumber']
+        .setValidators([
+          Validators.required,
+          Validators.maxLength(15)
+        ]);
+      this.formGroup.controls['documentNumber']
+        .updateValueAndValidity();
+    }
+  }
 }

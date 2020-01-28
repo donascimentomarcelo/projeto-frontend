@@ -6,40 +6,42 @@
     </div>
     <div class="container mt-5">
         <div class="card">
-            <div class="card-header mt-5">
+            <div class="mt-5">
                 <div class="first-title">
-                <h2>Faça a cotação do seguro do seu veículo</h2>
+                    <h2>Faça a cotação do seguro do seu veículo</h2>
                 </div>
                 <div class="second-title">
-                <h2>Entratemos em contato com você</h2>
+                    <h2 class="second-title-size">Entratemos em contato com você</h2>
                 </div>
             </div>
         
-            <div class="card-body">
-                <form>
+            <div class="card-body mt-3">
+                <form [formGroup]="formGroup" (submit)="submitForm()">
                     <div class="form-row">
-                      <div class="form-group col-md-6">
+                      <div class="col-xs-12 col-lg-6">
                         <label for="name">Nome</label>
-                        <input type="text" id="name" class="form-control" placeholder="Digite o nome.">
+                        <input type="text" id="name" formControlName="name" class="form-control" placeholder="Digite o nome.">
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="col-xs-12 col-lg-6">
                         <label for="email">E-mail</label>
-                        <input type="text" id="email" class="form-control" placeholder="Digite o e-mail.">
+                        <input type="text" id="email" formControlName="email" class="form-control" placeholder="Digite o e-mail.">
                       </div>
                     </div>
                     <div class="form-row">
-                      <div class="form-group col-md-3">
+                      <div class="col-xs-3 col-sm-3 col-lg-3">
                         <label for="document-type">Tipo de documento</label>
-                        <input type="text" id="document-type" class="form-control" placeholder="First name">
+                        <select class="form-control" id="document-type" formControlName="documentType">
+                            <option *ngFor="let item of documentTypes" [value]="item.key">{{item.value}}</option>
+                        </select>
                       </div>
-                      <div class="form-group col-md-9">
+                      <div class="col-xs-9 col-sm-9 col-lg-9">
                         <label for="document-number">Número do documento</label>
-                        <input type="text" id="document-number" class="form-control" placeholder="Last name">
+                        <input type="text" id="document-number" formControlName="documentNumber" class="form-control" placeholder="Digite o número do documento.">
                       </div>
                     </div>
                     
-                    <div class="mt-5">
-                        <button type="button" class="btn btn-success btn-lg btn-block">Cotar</button>
+                    <div class="align-button mt-5">
+                        <button type="submit" [disabled]="formGroup.invalid" class="btn btn-success btn-lg btn-block">Cotar</button>
                         <button type="button" class="btn btn-link btn-lg btn-block">Recuperar cotação</button>
                     </div>
                 </form>
