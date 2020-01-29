@@ -1,5 +1,8 @@
+
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormService } from '../shared/form.service';
+import toastr from 'toastr';
 
 @Component({
   selector: 'app-form',
@@ -20,6 +23,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   constructor(
     private fb: FormBuilder,
+    private formService: FormService,
   ) { }
 
   ngOnInit() {
@@ -34,16 +38,20 @@ export class FormComponent implements OnInit, AfterViewInit {
     });
   }
 
-  submitForm = () => console.log(this.formGroup.value);
+  submitForm() {
+    const object = this.formGroup.value;
+    this.formService.sendData(object)
+      .subscribe(() => toastr.success(`${object.numbre} cotado com sucesso!`));
+  }
 
   retrieveQuote = () => console.log('Recuperar cotação acionado!');
 
   private buildForm(): void {
     this.formGroup = this.fb.group({
-      name: [null, [Validators.required]],
+      nombre: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
-      documentType: [null, [Validators.required]],
-      documentNumber: [null]
+      tipodoc: [null, [Validators.required]],
+      numdoc: [null]
     });
   }
 
