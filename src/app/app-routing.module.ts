@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: 'form', loadChildren: './pages/form/form.module#FormModule' }
+  { path: '', loadChildren: './pages/form/form.module#FormModule' }
 ];
 
 @NgModule({
