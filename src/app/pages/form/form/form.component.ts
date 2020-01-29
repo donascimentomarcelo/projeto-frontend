@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import toastr from 'toastr';
 
 @Component({
   selector: 'app-form',
@@ -34,9 +35,9 @@ export class FormComponent implements OnInit, AfterViewInit {
     });
   }
 
-  submitForm = () => console.log(this.formGroup.value);
+  submitForm = () => toastr.success(`${this.formGroup.value.name} cotado com sucesso!`);
 
-  retrieveQuote = () => console.log('Recuperar cotação acionado!');
+  retrieveQuote = () => toastr.success('Cotação recuperada!');
 
   private buildForm(): void {
     this.formGroup = this.fb.group({
