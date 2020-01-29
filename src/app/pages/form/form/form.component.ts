@@ -31,7 +31,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.formGroup.controls.documentType.valueChanges
+    this.formGroup.controls.tipodoc.valueChanges
       .subscribe(value => {
         this.validateIdentityCardOrCell(value);
         this.validateForeignCell(value);
