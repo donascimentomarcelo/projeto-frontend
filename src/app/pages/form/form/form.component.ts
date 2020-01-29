@@ -44,7 +44,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       .subscribe(() => toastr.success(`${object.numbre} cotado com sucesso!`));
   }
 
-  retrieveQuote = () => console.log('Recuperar cotação acionado!');
+  retrieveQuote = () => toastr.success('Cotação recuperada!');
 
   private buildForm(): void {
     this.formGroup = this.fb.group({
