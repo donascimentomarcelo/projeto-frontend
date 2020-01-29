@@ -41,7 +41,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   submitForm() {
     const object = this.formGroup.value;
     this.formService.sendData(object)
-      .subscribe(() => toastr.success(`${object.numbre} cotado com sucesso!`));
+      .subscribe(() => toastr.success(`${object.nombre} cotado com sucesso!`));
   }
 
   retrieveQuote = () => toastr.success('Cotação recuperada!');
