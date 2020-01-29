@@ -50,6 +50,12 @@
     margin-left: 9%;
 }
   
+@media screen and (max-width: 1024px) {
+    .align-card-body {
+        margin-left: 6%;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .align-logo {
         margin-left: 0%;
