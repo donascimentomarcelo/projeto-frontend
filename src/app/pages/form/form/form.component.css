@@ -43,7 +43,11 @@
 }
 
 .align-card {
-   width: 70%;
+   width: 80%;
+}
+
+.align-card-body {
+    margin-left: 9%;
 }
   
 @media screen and (max-width: 768px) {
@@ -54,6 +58,12 @@
     
     .align-card {
        width: 100%;
+    }
+
+    .align-card-body {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
     }
 }
 
@@ -69,5 +79,7 @@
         font-size: 20px;
     }
 
-
+    .align-card-body {
+        width: 100%;
+    }
 }
